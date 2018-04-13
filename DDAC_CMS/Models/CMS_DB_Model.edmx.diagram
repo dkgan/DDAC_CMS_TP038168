@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2dca6266629b4422a64c8253561da70a" Name="Diagram1">
+        <EntityTypeShape EntityType="CMS_DBModel.C__MigrationHistory" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMS_DBModel.AspNetRole" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMS_DBModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMS_DBModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMS_DBModel.AspNetUser" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMS_DBModel.Booking" Width="1.5" PointX="8.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMS_DBModel.Cargo" Width="1.5" PointX="5.25" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMS_DBModel.Customer" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMS_DBModel.Port" Width="1.5" PointX="3" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMS_DBModel.ShippingSchedule" Width="1.5" PointX="5.25" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="CMS_DBModel.Vessel" Width="1.5" PointX="3" PointY="17.125" IsExpanded="true" />
+        <AssociationConnector Association="CMS_DBModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="CMS_DBModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="CMS_DBModel.FK_Booking_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="CMS_DBModel.FK_Cargo_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="CMS_DBModel.FK_dbo_ShippingSchedule_dbo_AspNetUsers_AdminID" ManuallyRouted="false" />
+        <AssociationConnector Association="CMS_DBModel.FK_Booking_Cargo" ManuallyRouted="false" />
+        <AssociationConnector Association="CMS_DBModel.FK_Booking_ShippingSchedule" ManuallyRouted="false" />
+        <AssociationConnector Association="CMS_DBModel.FK_Cargo_Customer" ManuallyRouted="false" />
+        <AssociationConnector Association="CMS_DBModel.FK_Cargo_Port" ManuallyRouted="false" />
+        <AssociationConnector Association="CMS_DBModel.FK_Cargo_Port1" ManuallyRouted="false" />
+        <AssociationConnector Association="CMS_DBModel.FK_dbo_ShippingSchedule_dbo_Port_ArrivalPortID" ManuallyRouted="false" />
+        <AssociationConnector Association="CMS_DBModel.FK_dbo_ShippingSchedule_dbo_Port_DeparturePortID" ManuallyRouted="false" />
+        <AssociationConnector Association="CMS_DBModel.FK_dbo_ShippingSchedule_dbo_Vessel_VesselID" ManuallyRouted="false" />
+        <AssociationConnector Association="CMS_DBModel.AspNetUserRoles" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

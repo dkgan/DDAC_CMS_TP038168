@@ -1,0 +1,94 @@
+﻿@model DDAC_CMS.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Create User";
+}
+
+
+<body style='background-color:ghostwhite'>
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-8">
+            <br />
+            <div class="" style="background-color: #ffffff; padding: 20px; border-radius: 20px; box-shadow: 0px 0px 5px;">
+                @using (Html.BeginForm("CreateUser", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <div class="form-horizontal">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        <h4>Create New Users</h4>
+                        <hr />
+
+                        <div class="form-group">
+                            <h6>
+                                @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                            </h6>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6>
+                                @Html.LabelFor(m => m.UserName, new { @class = "col-md-2 control-label" })
+                            </h6>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6>
+                                @Html.LabelFor(m => m.FullName, new { @class = "col-md-2 control-label" })
+                            </h6>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.FullName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6>
+                                @Html.LabelFor(m => m.PhoneNumber, new { @class = "col-md-2 control-label" })
+                            </h6>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6>
+                                @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                            </h6>
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6>
+                                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+                            </h6>
+                            <div class="col-md-10">
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        @**Bug need to fix*@
+                        <div class="form-group">
+                            <h6>
+                                @Html.Label("Roles", new { @class = "col-md-2 control-label" })
+                            </h6>
+                            <div class="col-md-10 d">
+                                @*@Html.DropDownList("Name")*@
+                                @Html.DropDownList("Roles", (IEnumerable<SelectListItem>)ViewBag.Roles, "-- Please Select -- ", new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" class="btn btn-success" value="Save" />&nbsp;&nbsp;&nbsp; 
+                                @Html.ActionLink("Back to Home", "Index", null, new { @class = "btn btn-success" })
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</body>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

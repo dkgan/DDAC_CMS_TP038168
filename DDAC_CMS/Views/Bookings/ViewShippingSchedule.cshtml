@@ -1,0 +1,106 @@
+﻿@model IEnumerable<DDAC_CMS.Models.ShippingSchedule>
+
+@{
+    ViewBag.Title = "ViewShippingSchedule";
+}
+
+<body style='background-color:ghostwhite'>
+    <br><br>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="box-title">
+                <b>Shipping Schedules</b>
+            </h3>
+        </div>
+
+        <div class="panel-body">
+            <table class="table table-hover table-bordered table-condensed" id="shippingschedule">
+                <thead>
+                    <tr>
+                        <td>
+                            <b>Shipping ID</b>
+                        </td>
+                        <td>
+                            <b>Departure Date & Time</b>
+                        </td>
+                        <td>
+                            <b>Arrival Date & Time</b>
+                        </td>
+                        <td>
+                            <b>Stauts</b>
+                        </td>
+                        <td>
+                            <b>Departure Port</b>
+                        </td>
+                        <td>
+                            <b>Arrival Port</b>
+                        </td>
+                        <td>
+                            <b>Vessel Name</b>
+                        </td>
+                        <td>
+                            <b>Created By</b>
+                        </td>
+                    </tr>
+                </thead>
+
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ShippingScheduleName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DepartureDateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ArrivalDateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SpaceAvailable)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Port.PortName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Port1.PortName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Vessel.VesselName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AspNetUser.FullName)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="panel-footer">
+            <p class="box-title"><b>Total Vessels till @String.Format("{0 : dddd, MMMM d, yyyy}", DateTime.Now)  : </b><span class="label label-primary">@Model.Count()</span></p>
+        </div>
+    </div>
+</body>
+
+
+@section scripts{
+
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#shippingschedule").DataTable();
+            $('#shippingschedule2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "dom": 't'
+            });
+        });
+    </script>
+}
+

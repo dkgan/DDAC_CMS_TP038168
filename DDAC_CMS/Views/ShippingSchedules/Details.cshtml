@@ -1,0 +1,93 @@
+﻿@model DDAC_CMS.Models.ShippingSchedule
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<body style='background-color:ghostwhite'>
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-8">
+            <br />
+            <div class="" style="background-color: #ffffff; padding: 20px; border-radius: 20px; box-shadow: 0px 0px 5px;">
+                <div>
+                    <h4>Shipping Schedule Details</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            <b>Shipping ID :</b>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ShippingScheduleName)
+                        </dd>
+
+                        <dt>
+                            <b>Departure Date & Time :</b>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DepartureDateTime)
+                        </dd>
+
+                        <dt>
+                            <b>Arrival Date & Time :</b>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ArrivalDateTime)
+                        </dd>
+
+                        <dt>
+                            <b>Stauts :</b>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.SpaceAvailable)
+                        </dd>
+
+                        <dt>
+                            <b>Departure Port Name :</b>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Port.PortName)
+                        </dd>
+
+                        <dt>
+                            <b>Arrival Port Name :</b>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Port1.PortName)
+                        </dd>
+
+                        <dt>
+                            <b>Vessel Name :</b>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Vessel.VesselName)
+                        </dd>
+
+                        <dt>
+                            <b>Created by :</b>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.AspNetUser.FullName)
+                        </dd>
+
+                    </dl>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.ShippingScheduleID }, new { @class = "btn btn-success" })&nbsp;&nbsp;&nbsp;
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</body>

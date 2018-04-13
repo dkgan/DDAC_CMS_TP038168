@@ -1,0 +1,113 @@
+﻿@model IEnumerable<DDAC_CMS.Models.Port>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<body style='background-color:ghostwhite'>
+    <br><br>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="box-title">
+                <b>Ports</b>
+            </h3>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="form-group">
+                @Html.ActionLink("Create New Port", "Create", null, new { @class = "btn btn-primary" })
+            </div>
+
+            <table class="table table-hover table-bordered table-condensed" id="port">
+                <thead>
+                    <tr>
+                        <td>
+                            <b>Port Name</b>
+                        </td>
+                        <td>
+                            <b>Port Location</b>
+                        </td>
+                        <td>
+                            <b>Port Country</b>
+                        </td>
+                        <td>
+                            <b>Option</b>
+                        </td>
+                        <td>
+                            <b>Option</b>
+                        </td>
+                        <td>
+                            <b>Option</b>
+                        </td>
+                    </tr>
+                </thead>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PortName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LocationName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CountryName)
+                        </td>
+                        
+                        <td class="form-action">
+                            <span style="color: #ff0000;">
+                                <a href="@Url.Action("Details", "Ports", new { id = item.PortID })" class="btn btn-success btn-block">
+                                    <i class="fa fa-unlock">&nbsp;</i>Details
+                                </a>
+                            </span>
+                        </td>
+                        <td class="form-action">
+                            <span style="color: #ff0000;">
+                                <a href="@Url.Action("Edit", "Ports", new { id = item.PortID })" class="btn btn-warning btn-block">
+                                    <i class="fa fa-unlock">&nbsp;</i>Edit
+                                </a>
+                            </span>
+                        </td>
+                        <td class="form-action">
+                            <span style="color: #ff0000;">
+                                <a href="@Url.Action("Delete", "Ports", new { id = item.PortID })" class="btn btn-danger btn-block">
+                                    <i class="fa fa-unlock">&nbsp;</i>Delete
+                                </a>
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="panel-footer">
+            <p class="box-title"><b>Total Ports till @String.Format("{0 : dddd, MMMM d, yyyy}", DateTime.Now)  : </b><span class="label label-primary">@Model.Count()</span></p>
+        </div>
+    </div>
+</body>
+
+
+@section scripts{
+
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#port").DataTable();
+            $('#port2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "dom": 't'
+            });
+        });
+    </script>
+}
+
+
+
+

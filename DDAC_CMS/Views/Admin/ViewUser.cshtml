@@ -1,0 +1,145 @@
+﻿@model IEnumerable<DDAC_CMS.Models.UserViewModel>
+
+@{
+    ViewBag.Title = "ViewUser";
+}
+<body style='background-color:ghostwhite'>
+    <br><br>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="box-title">
+                <b>View All Users</b>
+            </h3>
+        </div>
+        <!-- /.box-header -->
+        <div class="panel-body">
+            <table class="table table-hover table-bordered table-condensed" id="example1">
+                <thead>
+                    <tr>
+                        <td><b>Username</b></td>
+                        <td><b>Full Name</b></td>
+                        <td><b>Phone Number</b></td>
+                        <td><b>Email</b></td>
+                        <td><b>Roles</b></td>
+                        <td><b>Reset Password (Optional)</b></td>
+                        <td><b>Delete User (Optional)</b></td>
+
+                    </tr>
+                </thead>
+                @foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Username</td>
+                        <td>@user.FullName</td>
+                        <td>@user.PhoneNumber</td>
+                        <td>@user.Email</td>
+                        <td>@user.Role</td>
+                        <td class="form-action">
+                            <span style="color: #ff0000;">
+                                <a href="@Url.Action("ResetUserPassword", "Admin", new { userId = user.UserId , UserName = user.Username})" class="btn btn-warning btn-block">
+                                    <i class="fa fa-unlock">&nbsp;</i>Reset Password
+                                </a>
+                            </span>
+                        </td>
+                        <td class="form-action">
+                            @using (Html.BeginForm("DeleteUser", "Admin"))
+                            {
+                                <span style="color: #ff0000;">
+                                    @Html.Hidden("userId", user.UserId)
+                                    <button type="submit" class="btn btn-danger btn-block">Delete User</button>
+                                    @*<a href="@Url.Action("DeleteUser", "Admin", new { userId = user.UserId})" class="btn btn-danger btn-group-sm">
+                                        <i class="fa fa-unlock">&nbsp;</i>Delete User
+                                    </a>*@
+                                </span>
+                            }
+                            
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+        <div class="panel-footer">
+            <p class="box-title"><b>Total Users till @String.Format("{0 : dddd, MMMM d, yyyy}", DateTime.Now)  : </b><span class="label label-primary">@Model.Count()</span></p>
+        </div>
+    </div>
+</body>
+@*<br>
+    <h3>View All User</h3>
+
+    <p>
+        @Html.ActionLink("Add New User", "CreateUser", null, new { @class = "btn btn-default" })
+        @Html.ActionLink("Back to Home", "Index", null, new { @class = "btn btn-default" })
+    </p>
+    <br />
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "ManageAdmin_Edit", new { id = item.Email }) |
+                    @Html.ActionLink("Delete", "ManageAdmin_Delete", new { id = item.Email })
+                </td>
+            </tr>
+        }
+    </table>
+*@
+
+
+
+@section scripts{
+    
+    <script src="~/Scripts/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+    <script>
+        $(function () {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true,
+                "dom": 't'
+            });
+        });
+    </script>
+}
+
+

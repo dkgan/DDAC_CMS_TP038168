@@ -1,0 +1,61 @@
+﻿@model DDAC_CMS.Models.Customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<body style='background-color:ghostwhite'>
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-8">
+            <br />
+            <div class="" style="background-color: #ffffff; padding: 20px; border-radius: 20px; box-shadow: 0px 0px 5px;">
+                <div>
+                    <h4>Customer Details</h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            <b>Customer Name :</b>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+
+                        <dt>
+                            <b>Contact No :</b>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.ContactNo)
+                        </dd>
+
+                        <dt>
+                            <b>Address :</b>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Address)
+                        </dd>
+
+                        <dt>
+                            <b>Email :</b>
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
+
+                    </dl>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-success" })&nbsp;&nbsp;&nbsp;
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
+                    </div>
+                </div>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+</body>

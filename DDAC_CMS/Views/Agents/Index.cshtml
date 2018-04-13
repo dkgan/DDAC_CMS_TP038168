@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div style='text-align: center;padding: 30px;margin-bottom: 30px;font-size: 21px;font-weight: 200;line-height: 2.1428571435;'>
+    <div style='font-family: "Times New Roman";font-weight: 500;font-size: 80px;line-height: 1.1;'>Maersk Line</div><br>
+    <div style='font-family: "Times New Roman";font-weight: 200;font-size: 45px;line-height: 1.1;'>Container Management System (CMS)</div>
+</div>
+<br>
+
+<body style='background-color:ghostwhite'>
+    <div class="row" style='text-align:center'>
+        <div class="col-md-2"></div>
+        <div class="col-md-4" style='background-color:floralwhite; opacity:0.9; border:2px solid black; border-radius: 10px; text-align:center'>
+            <h3>Customer</h3>
+            <a href='@Url.Action("Index", "Customers")'>
+                <img src='@Url.Content("https://cdn0.iconfinder.com/data/icons/cosmetic-store/25/Register-512.png")' style="width:150px;height:150px;" />
+            </a><br><br><br>
+        </div>
+        <div class="col-md-4" style='background-color:floralwhite; opacity:0.9; border:2px solid black; border-radius: 10px; text-align:center'>
+            <h3>Cargo</h3>
+            <a href='@Url.Action("Index", "Cargoes")'>
+                <img src='@Url.Content("https://cdn.onlinewebfonts.com/svg/img_538295.png")' style="width:150px;height:150px;" />
+            </a><br><br><br>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-4" style='background-color:floralwhite; opacity:0.9; border:2px solid black; border-radius: 10px; text-align:center'>
+            <h3>Booking Schedule</h3>
+            <a href='@Url.Action("Index", "Bookings")'>
+                <img src='@Url.Content("https://cdn0.iconfinder.com/data/icons/booking/154/choice-booking-bag-order-online-512.png")' style="width:150px;height:150px;" />
+            </a><br><br><br>
+        </div>
+        <div class="col-md-4" style='background-color:floralwhite; opacity:0.9; border:2px solid black; border-radius: 10px; text-align:center'>
+            <h3>Receive Confirmation</h3>
+            <a href='@Url.Action("ViewBookingStatus", "Agents")'>
+                <img src='@Url.Content("https://png.icons8.com/metro/540/delivery.png")' style="width:150px;height:150px;" />
+            </a><br><br><br>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</body>
+
+
+

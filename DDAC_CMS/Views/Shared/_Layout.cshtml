@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Maersk Line Container Management System</title>
+    <link href="~/Content/Image/favicon2.ico" rel="shortcut icon" type="image/x-icon" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+
+<body>
+    <div class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand">
+                    <img style="width: 190px;" src="~/Content/Image/maersk_Logo.png" alt="EAT'N'Go!">
+                </a>
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Admin")</li>
+                        <li class="dropdown show">
+                            <a class="dropdown-toggle" aria-haspopup="true" id="dropdownMenu "aria-expanded="false" href="#" data-toggle="dropdown">
+                                User
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu active" aria-labelledby="dropdownMenu">
+                                <li>@Html.ActionLink("User Registration", "CreateUser", "Admin")</li>
+                                <li>@Html.ActionLink("View Users", "ViewUser", "Admin")</li>
+                            </ul>
+                        </li>
+                        <li class="dropdown show">
+                            <a class="dropdown-toggle" aria-haspopup="true" id="dropdownMenu " aria-expanded="false" href="#" data-toggle="dropdown">
+                                Schedule
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu active" aria-labelledby="dropdownMenu">
+                                <li>@Html.ActionLink("Vessel", "Index", "Vessels")</li>
+                                <li>@Html.ActionLink("Ports", "Index", "Ports")</li>
+                                <li>@Html.ActionLink("Shipping Schedules", "Index", "ShippingSchedules")</li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Bookings", "ViewBooking", "Admin_Booking")</li>
+
+                    }
+                    @if (User.IsInRole("Agents"))
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Agents")</li>
+                        <li>@Html.ActionLink("Customer", "Index", "Customers")</li>
+                        <li>@Html.ActionLink("Cargo", "Index", "Cargoes")</li>
+                        <li class="dropdown show">
+                            <a class="dropdown-toggle" aria-haspopup="true" id="dropdownMenu " aria-expanded="false" href="#" data-toggle="dropdown">
+                                Booking Vessel
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu active" aria-labelledby="dropdownMenu">
+                                <li>@Html.ActionLink("View Vessels", "ViewVessels", "Bookings")</li>
+                                <li>@Html.ActionLink("View Shipping Schedule", "ViewShippingSchedule", "Bookings")</li>
+                                <li>@Html.ActionLink("Book Vessel", "Index", "Bookings")</li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Receive Confirmation", "ViewBookingStatus", "Agents")</li>
+                    }
+                    @if (!User.IsInRole("Administrator") && !User.IsInRole("Agents"))
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Container Management System - Maersk Line</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
